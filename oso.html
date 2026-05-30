@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Una sorpresa para ti! 🐻</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffebee 0%, #f8bbd0 50%, #f48fb1 100%);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .corazones-fondo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .corazon-fondo {
+            position: absolute;
+            color: #ec407a;
+            font-size: 22px;
+            opacity: 0.4;
+            animation: subirFondo 10s linear infinite;
+        }
+
+        .corazon-fondo:nth-child(even) {
+            color: #ad1457;
+            font-size: 16px;
+            animation-duration: 13s;
+            animation-direction: reverse;
+        }
+
+        @keyframes subirFondo {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.5; }
+            100% { transform: translateY(-50px) rotate(360deg); opacity: 0; }
+        }
+
+        .contenedor-osito {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 50px 70px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(238, 156, 167, 0.5);
+            backdrop-filter: blur(8px);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 40px;
+            color: #ad1457;
+            margin-bottom: 40px;
+        }
+
+        .osito-grande {
+            font-size: 180px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            display: inline-block;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.1));
+        }
+
+        .osito-grande:active { transform: scale(0.85); }
+        .osito-grande:hover { animation: balanceo 1s ease-in-out infinite alternate; }
+
+        @keyframes balanceo {
+            from { transform: rotate(-5deg); }
+            to { transform: rotate(5deg); }
+        }
+
+        .corazon-saliente {
+            position: absolute;
+            color: #e91e63;
+            font-size: 25px;
+            pointer-events: none;
+            animation: volarCorazon 1.5s ease-out forwards;
+        }
+
+        @keyframes volarCorazon {
+            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-200px) translateX( calc(-50px + (Math.random() * 100)) ) scale(0) rotate(360deg); opacity: 0; }
+        }
+
+        .mensaje-final {
+            margin-top: 40px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            color: #880e4f;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .mensaje-final.activo {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .navegacion {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .boton {
+            padding: 10px 20px;
+            background-color: #ec407a;
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .boton:hover { background-color: #ad1457; }
+    </style>
+</head>
+<body>
+
+    <div class="corazones-fondo">
+        <div class="corazon-fondo" style="left: 10%; animation-delay: 0s;">❤️</div>
+        <div class="corazon-fondo" style="left: 25%; animation-delay: 2s;">💖</div>
+        <div class="corazon-fondo" style="left: 40%; animation-delay: 4s;">❤️</div>
+        <div class="corazon-fondo" style="left: 58%; animation-delay: 1s;">💘</div>
+        <div class="corazon-fondo" style="left: 75%; animation-delay: 3.5s;">❤️</div>
+        <div class="corazon-fondo" style="left: 90%; animation-delay: 0.5s;">💝</div>
+    </div>
+
+    <div class="contenedor-osito">
+        <h1>¡Apachúrralo mucho! 🥰👇</h1>
+
+        <div class="osito-grande" onclick="lanzarCorazones(this)">
+            🐻❤️
+        </div>
+
+        <div class="mensaje-final" id="textoEspecial">
+            ¡Te amo con todo mi corazón! ❤️✨
+        </div>
+
+        <div class="navegacion">
+            <a href="index.html" class="boton">⬅️ Volver a las flores</a>
+            <a href="yami.html" class="boton">📩 Ir a la carta</a>
+        </div>
+    </div>
+
+    <script>
+        function lanzarCorazones(osito) {
+            document.getElementById('textoEspecial').classList.add('activo');
+
+            for(let i = 0; i < 12; i++) {
+                let corazon = document.createElement('span');
+                const corazones = ['❤️', '💖', '💗', '💓', '💝'];
+                corazon.innerHTML = corazones[Math.floor(Math.random() * corazones.length)];
+                corazon.className = 'corazon-saliente';
+                
+                corazon.style.left = `${Math.random() * 100 - 50}px`;
+                corazon.style.top = `${Math.random() * 50 - 20}px`;
+                corazon.style.animationDelay = `${Math.random() * 0.2}s`;
+
+                osito.appendChild(corazon);
+                setTimeout(() => corazon.remove(), 1500);
+            }
+        }
+    </script>
+
+</body>
+</html>
