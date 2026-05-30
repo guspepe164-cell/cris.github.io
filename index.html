@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Yamisita 💖</title>
+    <title>Para ti, con mucho amor 🌸</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
 
@@ -15,168 +15,205 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
             font-family: 'Montserrat', sans-serif;
+            padding: 40px 20px;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Animación de corazones flotando */
-        .corazones-fondo {
+        .flores-fondo {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 0;
         }
 
-        .corazon {
+        .flor-fija {
             position: absolute;
-            color: #ff4d6d;
-            font-size: 20px;
-            animation: flotar 6s linear infinite;
-            opacity: 0.7;
+            color: #ec407a;
+            font-size: 30px;
+            opacity: 0.4;
+            animation: flotar 12s linear infinite;
+        }
+
+        .flor-fija:nth-child(even) {
+            color: #ad1457;
+            font-size: 22px;
+            animation-duration: 15s;
+            animation-direction: reverse;
         }
 
         @keyframes flotar {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.5; }
+            100% { transform: translateY(-50px) rotate(360deg); opacity: 0; }
         }
 
-        /* Tarjeta principal */
-        .tarjeta-romantica {
+        .contenedor-principal {
             position: relative;
             z-index: 2;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            box-shadow: 0 8px 32px rgba(238, 156, 167, 0.4);
-            max-width: 550px;
-            width: 100%;
-            padding: 40px 30px;
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            transform: translateY(30px);
-            opacity: 0;
-            animation: aparecer 1.5s ease-out forwards;
-        }
-
-        @keyframes aparecer {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .icono-central {
-            font-size: 50px;
-            color: #ff4d6d;
-            margin-bottom: 15px;
-            animation: latido 1.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes latido {
-            from { transform: scale(1); }
-            to { transform: scale(1.2); }
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 38px;
-            color: #b44564;
+            font-size: 42px;
+            color: #880e4f;
             margin-bottom: 20px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            text-shadow: 0 2px 5px rgba(255,255,255,0.5);
         }
 
-        .mensaje {
+        .subtitulo {
             font-size: 18px;
-            line-height: 1.8;
-            color: #5a3e47;
-            margin-bottom: 25px;
-            font-weight: 400;
-        }
-
-        .mensaje span {
-            font-family: 'Dancing Script', cursive;
-            font-size: 24px;
-            color: #b44564;
-            font-weight: 600;
-        }
-
-        .fecha {
-            font-size: 14px;
-            color: #916b78;
+            color: #ad1457;
+            margin-bottom: 60px;
             font-style: italic;
-            margin-bottom: 10px;
         }
 
-        .firma {
-            font-family: 'Dancing Script', cursive;
-            font-size: 26px;
-            color: #b44564;
-            font-weight: 600;
+        .zona-flores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 50px;
+            margin-bottom: 80px;
         }
 
-        .decoracion {
+        .flor-contenedor {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-            color: #ee9ca7;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .flor-contenedor:hover {
+            transform: translateY(-8px);
+        }
+
+        .peonia {
+            font-size: 90px;
+            transition: all 0.6s ease;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .peonia.cerrada::before { content: '🌱'; }
+        .peonia.abierta::before { content: '🌸'; transform: scale(1.2); }
+
+        .texto-flor {
+            margin-top: 15px;
+            width: 180px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 12px;
+            border-radius: 15px;
+            font-family: 'Dancing Script', cursive;
             font-size: 20px;
+            color: #ad1457;
+            opacity: 0;
+            transform: translateY(10px) scale(0.8);
+            transition: all 0.5s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .flor-contenedor.abierta .texto-flor {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .flor-contenedor.abierta .peonia {
+            animation: sacudir 0.5s ease;
+        }
+
+        @keyframes sacudir {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .zona-botones {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dashed #ec407a44;
+        }
+
+        .boton {
+            padding: 15px 25px;
+            background: linear-gradient(45deg, #ec407a, #f06292);
+            color: white;
+            font-size: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .boton:hover {
+            transform: scale(1.08);
+            background: linear-gradient(45deg, #ad1457, #ec407a);
         }
     </style>
 </head>
 <body>
 
-    <!-- Corazones que flotan de fondo -->
-    <div class="corazones-fondo">
-        <div class="corazon" style="left: 10%; animation-delay: 0s;">❤</div>
-        <div class="corazon" style="left: 25%; animation-delay: 1s; font-size: 25px;">❤</div>
-        <div class="corazon" style="left: 40%; animation-delay: 2s;">❤</div>
-        <div class="corazon" style="left: 55%; animation-delay: 3s; font-size: 18px;">❤</div>
-        <div class="corazon" style="left: 70%; animation-delay: 4s;">❤</div>
-        <div class="corazon" style="left: 85%; animation-delay: 5s; font-size: 22px;">❤</div>
-        <div class="corazon" style="left: 15%; animation-delay: 2.5s;">❤</div>
-        <div class="corazon" style="left: 65%; animation-delay: 1.2s;">❤</div>
+    <div class="flores-fondo">
+        <div class="flor-fija" style="left: 8%; animation-delay: 0s;">🌸</div>
+        <div class="flor-fija" style="left: 25%; animation-delay: 2s;">🌺</div>
+        <div class="flor-fija" style="left: 40%; animation-delay: 4s;">🌸</div>
+        <div class="flor-fija" style="left: 58%; animation-delay: 1s;">🌻</div>
+        <div class="flor-fija" style="left: 75%; animation-delay: 3.5s;">🌸</div>
+        <div class="flor-fija" style="left: 90%; animation-delay: 0.5s;">🌷</div>
     </div>
 
-    <!-- Tarjeta con el mensaje -->
-    <div class="tarjeta-romantica">
-        <div class="icono-central">❤</div>
-        
-        <h1>Para ti, mi persona favorita</h1>
+    <div class="contenedor-principal">
+        <h1>🌸 Flores de amor para Yami 🌸</h1>
+        <p class="subtitulo">Toca cada flor para ver lo que guarda</p>
 
-        <div class="decoracion">✿ ❤ ✿</div>
+        <div class="zona-flores">
+            <div class="flor-contenedor" onclick="abrirFlor(this)">
+                <div class="peonia cerrada"></div>
+                <div class="texto-flor">Eres la flor más hermosa que ha florecido en mi vida ✨</div>
+            </div>
+            <div class="flor-contenedor" onclick="abrirFlor(this)">
+                <div class="peonia cerrada"></div>
+                <div class="texto-flor">Cada día a tu lado es como ver florecer algo maravilloso ❤️</div>
+            </div>
+            <div class="flor-contenedor" onclick="abrirFlor(this)">
+                <div class="peonia cerrada"></div>
+                <div class="texto-flor">Tu belleza y dulzura iluminan todo lo que tocas 🌷</div>
+            </div>
+            <div class="flor-contenedor" onclick="abrirFlor(this)">
+                <div class="peonia cerrada"></div>
+                <div class="texto-flor">Gracias por hacer que mi mundo sea tan colorido y especial 🌺</div>
+            </div>
+        </div>
 
-        <p class="mensaje">
-            Desde que llegaste a mi vida, todo tiene más color y sentido. Eres ese pensamiento que me alegra al despertar 
-            y la última sonrisa antes de dormir.<br><br>
-            Gracias por ser tú, por estar ahí y por hacer que cada día sea un regalo solo por tenerte en él. No importa 
-            lo que pase, quiero que sepas que mi lugar favorito en el mundo es a tu lado.<br><br>
-            Eres mi casualidad más bonita y mi decisión más segura. <br>
-            <span>Te quiero con todo mi corazón.</span>
-        </p>
+        <div class="zona-botones">
+            <a href="yami.html" class="boton">📩 Ver mi carta especial</a>
+            <a href="oso.html" class="boton">🐻 Ver sorpresa especial</a>
+        </div>
 
-        <div class="decoracion">✿ ❤ ✿</div>
-
-        <p class="fecha">Hoy y siempre</p>
-        <p class="firma">— Con todo mi amor Cristopher</p>
     </div>
+
+    <script>
+        function abrirFlor(elemento) {
+            elemento.classList.toggle('abierta');
+            let laFlor = elemento.querySelector('.peonia');
+            laFlor.classList.toggle('cerrada');
+            laFlor.classList.toggle('abierta');
+        }
+    </script>
 
 </body>
 </html>
