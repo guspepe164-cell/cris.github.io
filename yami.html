@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Yamisita 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animación de corazones flotando */
+        .corazones-fondo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .corazon {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: flotar 6s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Tarjeta principal */
+        .tarjeta-romantica {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(238, 156, 167, 0.4);
+            max-width: 550px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: aparecer 1.5s ease-out forwards;
+        }
+
+        @keyframes aparecer {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .icono-central {
+            font-size: 50px;
+            color: #ff4d6d;
+            margin-bottom: 15px;
+            animation: latido 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes latido {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 38px;
+            color: #b44564;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .mensaje {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #5a3e47;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .mensaje span {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            color: #b44564;
+            font-weight: 600;
+        }
+
+        .fecha {
+            font-size: 14px;
+            color: #916b78;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .firma {
+            font-family: 'Dancing Script', cursive;
+            font-size: 26px;
+            color: #b44564;
+            font-weight: 600;
+        }
+
+        .decoracion {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            color: #ee9ca7;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Corazones que flotan de fondo -->
+    <div class="corazones-fondo">
+        <div class="corazon" style="left: 10%; animation-delay: 0s;">❤</div>
+        <div class="corazon" style="left: 25%; animation-delay: 1s; font-size: 25px;">❤</div>
+        <div class="corazon" style="left: 40%; animation-delay: 2s;">❤</div>
+        <div class="corazon" style="left: 55%; animation-delay: 3s; font-size: 18px;">❤</div>
+        <div class="corazon" style="left: 70%; animation-delay: 4s;">❤</div>
+        <div class="corazon" style="left: 85%; animation-delay: 5s; font-size: 22px;">❤</div>
+        <div class="corazon" style="left: 15%; animation-delay: 2.5s;">❤</div>
+        <div class="corazon" style="left: 65%; animation-delay: 1.2s;">❤</div>
+    </div>
+
+    <!-- Tarjeta con el mensaje -->
+    <div class="tarjeta-romantica">
+        <div class="icono-central">❤</div>
+        
+        <h1>Para Yami, mi persona favorita</h1>
+
+        <div class="decoracion">✿ ❤ ✿</div>
+
+        <p class="mensaje">
+            Desde que llegaste a mi vida, todo tiene más color y sentido. Eres ese pensamiento que me alegra al despertar 
+            y la última sonrisa antes de dormir.<br><br>
+            Gracias por ser tú, por estar ahí y por hacer que cada día sea un regalo solo por tenerte en él. No importa 
+            lo que pase, quiero que sepas que mi lugar favorito en el mundo es a tu lado.<br><br>
+            Eres mi casualidad más bonita y mi decisión más segura. <br>
+            <span>Te quiero con todo mi corazón.</span>
+        </p>
+
+        <div class="decoracion">✿ ❤ ✿</div>
+
+        <p class="fecha">Hoy y siempre</p>
+        <p class="firma">— Con todo mi amor Cristopher</p>
+    </div>
+
+</body>
+</html>
